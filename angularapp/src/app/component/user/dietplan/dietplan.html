@@ -1,0 +1,39 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="dietplans-container">
+  <h1>🍽 Personalized Diet Plans</h1>
+  <p class="intro">Your diet plan is tailored based on your diabetic type, weight, and activity level.</p>
+
+  <!-- Filter by Diabetic Type -->
+  <div class="filter">
+    <label for="diabeticType">Filter by Diabetic Type:</label>
+    <select id="diabeticType" [(ngModel)]="selectedType">
+      <option *ngFor="let type of diabeticTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+
+  <!-- Diet Plans List -->
+  <div class="plan-cards">
+    <div class="plan-card" *ngFor="let plan of filteredDietPlans()">
+      <h2>{{ plan.title }}</h2>
+      <p><strong>Type:</strong> {{ plan.diabeticType }}</p>
+      <p><strong>Description:</strong> {{ plan.description }}</p>
+
+      <div class="meals-section">
+        <h3>Meals</h3>
+        <ul>
+          <li *ngFor="let meal of plan.meals">
+            <strong>{{ meal.name }}:</strong> {{ meal.details }} | <em>{{ meal.calories }} kcal</em>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tips-section">
+        <h3>Health Tips</h3>
+        <ul>
+          <li *ngFor="let tip of plan.tips">{{ tip }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

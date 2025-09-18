@@ -1,0 +1,54 @@
+<div class="manage-meallog-container">
+    <h1>📖 Manage Meal Logs</h1>
+    <p class="subtitle">View and manage users’ meal records.</p>
+  
+    <button class="add-btn" (click)="openAddLog()">+ Add Meal Log</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User</th>
+          <th>Meal</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Calories</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of mealLogs">
+          <td>{{ log.id }}</td>
+          <td>{{ log.user }}</td>
+          <td>{{ log.meal }}</td>
+          <td>{{ log.date }}</td>
+          <td>{{ log.time }}</td>
+          <td>{{ log.calories }}</td>
+          <td>
+            <button class="edit" (click)="editLog(log)">Edit</button>
+            <button class="delete" (click)="deleteLog(log.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <h2>{{ editingLog ? 'Edit Meal Log' : 'Add Meal Log' }}</h2>
+        <form (ngSubmit)="saveLog()">
+          <input type="text" [(ngModel)]="selectedLog.user" name="user" placeholder="User Name" required />
+          <input type="text" [(ngModel)]="selectedLog.meal" name="meal" placeholder="Meal Name" required />
+          <input type="date" [(ngModel)]="selectedLog.date" name="date" required />
+          <input type="time" [(ngModel)]="selectedLog.time" name="time" required />
+          <input type="number" [(ngModel)]="selectedLog.calories" name="calories" placeholder="Calories" required />
+  
+          <div class="modal-actions">
+            <button type="submit">{{ editingLog ? 'Update' : 'Add' }}</button>
+            <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,56 @@
+<div class="user-dashboard-container">
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h1>Welcome, {{ userName }} 👋</h1>
+    <p>Here’s your personalized diabetic diet and health overview.</p>
+  </section>
+
+  <!-- Stats Cards -->
+  <section class="cards">
+    <div class="card">
+      <h3>Total Meals Today</h3>
+      <p>{{ mealsToday }}</p>
+    </div>
+    <div class="card">
+      <h3>Glucose Level</h3>
+      <p>{{ latestGlucose }} mg/dL</p>
+    </div>
+    <div class="card">
+      <h3>Diet Plans</h3>
+      <p>{{ dietPlans.length }}</p>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="quick-links">
+    <h2>Quick Access</h2>
+    <div class="link-grid">
+      <a routerLink="/user/meals">🍽 Meals</a>
+      <a routerLink="/user/meallog">📝 Meal Logs</a>
+      <a routerLink="/user/dietplans">📅 Diet Plans</a>
+      <a routerLink="/user/glucoselog">💉 Glucose Logs</a>
+      <a routerLink="/user/fooditems">🥗 Food Items</a>
+    </div>
+  </section>
+
+  <!-- Chart Section -->
+  <section class="charts">
+    <div class="chart-card">
+      <h3>Glucose Trends</h3>
+      <div class="chart-placeholder">
+        <p>Glucose Chart Placeholder</p>
+        <p>Data: {{ glucoseChartData | json }}</p>
+        <p>Labels: {{ glucoseChartLabels | json }}</p>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Meal Distribution</h3>
+      <div class="chart-placeholder">
+        <p>Meal Chart Placeholder</p>
+        <p>Data: {{ mealChartData | json }}</p>
+        <p>Labels: {{ mealChartLabels | json }}</p>
+      </div>
+    </div>
+  </section>
+</div>

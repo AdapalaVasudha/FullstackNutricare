@@ -1,0 +1,22 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="meals-container">
+  <h1>🍽 Meals</h1>
+  <p class="intro">View and manage your meals. Each meal is tailored to your diabetic type and health goals.</p>
+
+  <!-- Add Meal Button -->
+  <div class="action-bar">
+    <button (click)="addMeal()">+ Add New Meal</button>
+  </div>
+
+  <!-- Meals List -->
+  <div class="meal-cards">
+    <div class="meal-card" *ngFor="let meal of meals">
+      <h2>{{ meal.name }}</h2>
+      <p><strong>Type:</strong> {{ meal.type }}</p>
+      <p><strong>Ingredients:</strong> {{ meal.ingredients }}</p>
+      <p><strong>Calories:</strong> {{ meal.calories }} kcal</p>
+      <p><strong>Description:</strong> {{ meal.description }}</p>
+    </div>
+  </div>
+</div>

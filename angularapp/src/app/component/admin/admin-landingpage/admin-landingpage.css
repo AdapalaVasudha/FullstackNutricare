@@ -1,0 +1,78 @@
+.landing-container {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .header h1 {
+    font-size: 2.2rem;
+    color: #1e40af;
+  }
+  
+  .subtitle {
+    color: #475569;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+  
+  .intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+  }
+  
+  .card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #0f172a;
+  }
+  
+  .card p {
+    color: #475569;
+    font-size: 0.95rem;
+  }
+  
+  .actions {
+    margin-top: 30px;
+  }
+  
+  button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  button:first-child {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  button.secondary {
+    background-color: #ef4444;
+    color: white;
+  }
+  

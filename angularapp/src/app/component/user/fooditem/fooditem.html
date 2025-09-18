@@ -1,0 +1,33 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="fooditems-container">
+  <h1>🥗 Food Items</h1>
+  <p class="intro">Browse all food items with their nutritional details to manage your diet effectively.</p>
+
+  <!-- Add Food Item Button -->
+  <div class="action-bar">
+    <button (click)="addFoodItem()">+ Add Food Item</button>
+  </div>
+
+  <!-- Food Items Table -->
+  <table class="fooditems-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Calories (kcal)</th>
+        <th>Carbs (g)</th>
+        <th>Protein (g)</th>
+        <th>Fats (g)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of foodItems">
+        <td>{{ food.name }}</td>
+        <td>{{ food.calories }}</td>
+        <td>{{ food.carbs }}</td>
+        <td>{{ food.protein }}</td>
+        <td>{{ food.fats }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,74 @@
+<div class="manage-meals-container">
+  <h2>Manage Meals</h2>
+  
+  <div class="actions">
+    <button class="btn btn-primary" (click)="openAddMeal()">Add New Meal</button>
+  </div>
+
+  <div class="meals-table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Calories</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meal of meals">
+          <td>{{ meal.id }}</td>
+          <td>{{ meal.name }}</td>
+          <td>{{ meal.type }}</td>
+          <td>{{ meal.calories }}</td>
+          <td>{{ meal.description }}</td>
+          <td>
+            <button class="btn btn-sm btn-secondary" (click)="editMeal(meal)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteMeal(meal.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Add/Edit Meal -->
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <h3>{{ editingMeal ? 'Edit Meal' : 'Add New Meal' }}</h3>
+      
+      <form (ngSubmit)="saveMeal()">
+        <div class="form-group">
+          <label for="name">Meal Name:</label>
+          <input type="text" id="name" [(ngModel)]="selectedMeal.name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="type">Meal Type:</label>
+          <select id="type" [(ngModel)]="selectedMeal.type" name="type" required>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="calories">Calories:</label>
+          <input type="number" id="calories" [(ngModel)]="selectedMeal.calories" name="calories" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" [(ngModel)]="selectedMeal.description" name="description" rows="3"></textarea>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

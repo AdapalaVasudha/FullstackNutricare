@@ -1,0 +1,128 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">NutriCare Admin</h2>
+    <nav>
+      <ul>
+        <li (click)="setActive('overview')" [class.active]="activeSection==='overview'">📊 Overview</li>
+        <li (click)="setActive('users')" [class.active]="activeSection==='users'">👥 Users</li>
+        <li (click)="setActive('meals')" [class.active]="activeSection==='meals'">🍽 Meals</li>
+        <li (click)="setActive('mealLogs')" [class.active]="activeSection==='mealLogs'">📝 Meal Logs</li>
+        <li (click)="setActive('food')" [class.active]="activeSection==='food'">🥗 Food Items</li>
+        <li (click)="setActive('glucose')" [class.active]="activeSection==='glucose'">💉 Glucose Logs</li>
+        <li (click)="setActive('diet')" [class.active]="activeSection==='diet'">📅 Diet Plans</li>
+        <li (click)="setActive('auth')" [class.active]="activeSection==='auth'">🔑 Signup/Login</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="topbar">
+      <h1>Admin Dashboard</h1>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </header>
+
+    <!-- Sections -->
+    <section class="content" *ngIf="activeSection==='overview'">
+      <h2>📊 Overview</h2>
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card"><h3>Total Users</h3><p>{{ users.length }}</p></div>
+        <div class="card"><h3>Total Meals</h3><p>{{ meals.length }}</p></div>
+        <div class="card"><h3>Diet Plans</h3><p>{{ dietPlans.length }}</p></div>
+        <div class="card"><h3>Glucose Logs</h3><p>{{ glucoseLogs.length }}</p></div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts">
+        <div class="chart-card">
+          <h3>Glucose Trends</h3>
+          <div class="chart-placeholder">
+            <p>Glucose Chart Placeholder</p>
+            <p>Data: {{ glucoseChartData | json }}</p>
+            <p>Labels: {{ glucoseChartLabels | json }}</p>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Meal Distribution</h3>
+          <div class="chart-placeholder">
+            <p>Meal Chart Placeholder</p>
+            <p>Data: {{ mealChartData | json }}</p>
+            <p>Labels: {{ mealChartLabels | json }}</p>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Diet Compliance</h3>
+          <div class="chart-placeholder">
+            <p>Diet Chart Placeholder</p>
+            <p>Data: {{ dietChartData | json }}</p>
+            <p>Labels: {{ dietChartLabels | json }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Users -->
+    <section class="content" *ngIf="activeSection==='users'">
+      <h2>👥 Manage Users</h2>
+      <table>
+        <thead><tr><th>Name</th><th>Email</th><th>Age</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let u of users">
+            <td>{{ u.name }}</td><td>{{ u.email }}</td><td>{{ u.age }}</td>
+            <td>
+              <button (click)="viewUser(u)">View</button>
+              <button class="danger" (click)="deleteUser(u.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Meals -->
+    <section class="content" *ngIf="activeSection==='meals'">
+      <h2>🍽 Meals</h2>
+      <button (click)="addMeal()">+ Add Meal</button>
+      <ul><li *ngFor="let m of meals">{{ m.name }} ({{ m.type }})</li></ul>
+    </section>
+
+    <!-- Meal Logs -->
+    <section class="content" *ngIf="activeSection==='mealLogs'">
+      <h2>📝 Meal Logs</h2>
+      <ul><li *ngFor="let log of mealLogs">{{ log.user }} ate {{ log.meal }} at {{ log.time }}</li></ul>
+    </section>
+
+    <!-- Food Items -->
+    <section class="content" *ngIf="activeSection==='food'">
+      <h2>🥗 Food Items</h2>
+      <button (click)="addFood()">+ Add Food</button>
+      <ul><li *ngFor="let f of foodItems">{{ f.name }} - {{ f.calories }} kcal</li></ul>
+    </section>
+
+    <!-- Glucose Logs -->
+    <section class="content" *ngIf="activeSection==='glucose'">
+      <h2>💉 Glucose Logs</h2>
+      <ul><li *ngFor="let g of glucoseLogs">{{ g.user }} - {{ g.level }} mg/dL ({{ g.date }})</li></ul>
+    </section>
+
+    <!-- Diet Plans -->
+    <section class="content" *ngIf="activeSection==='diet'">
+      <h2>📅 Diet Plans</h2>
+      <button (click)="createPlan()">+ Create Plan</button>
+      <div *ngFor="let dp of dietPlans" class="plan-card">
+        <h3>{{ dp.title }}</h3><p>{{ dp.description }}</p>
+      </div>
+    </section>
+
+    <!-- Authentication -->
+    <section class="content" *ngIf="activeSection==='auth'">
+      <h2>🔑 Signup/Login</h2>
+      <p>Manage registered users and authentication system here.</p>
+      <button (click)="viewSignups()">View Signups</button>
+    </section>
+
+  </main>
+</div>

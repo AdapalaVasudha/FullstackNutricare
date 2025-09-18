@@ -1,0 +1,66 @@
+.manage-dietplan-container {
+    padding: 30px;
+    background: #fefce8;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  h1 {
+    color: #ca8a04;
+  }
+  
+  .subtitle {
+    color: #713f12;
+    margin-bottom: 20px;
+  }
+  
+  .add-btn {
+    background: #ca8a04;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .add-btn:hover {
+    background: #a16207;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #facc15;
+  }
+  
+  th {
+    background: #ca8a04;
+    color: white;
+  }
+  
+  button.edit {
+    background: #22c55e;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    margin-right: 5px;
+  }
+  
+  button.delete {
+    background: #dc2626;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+  }
+  

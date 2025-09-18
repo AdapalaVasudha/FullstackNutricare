@@ -1,0 +1,74 @@
+.meals-container {
+    padding: 40px 60px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9fafb;
+    min-height: 100vh;
+    color: #1e3a8a;
+  }
+  
+  /* Title & Intro */
+  .meals-container h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+  }
+  
+  .intro {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #334155;
+  }
+  
+  /* Action Bar */
+  .action-bar {
+    margin-bottom: 20px;
+  }
+  
+  .action-bar button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .action-bar button:hover {
+    background: #1e40af;
+  }
+  
+  /* Meal Cards */
+  .meal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: flex-start;
+  }
+  
+  .meal-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    flex: 1 1 300px;
+    max-width: 350px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .meal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+  
+  .meal-card h2 {
+    margin-bottom: 8px;
+    color: #2563eb;
+  }
+  
+  .meal-card p {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  

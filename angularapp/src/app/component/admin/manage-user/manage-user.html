@@ -1,0 +1,74 @@
+<div class="manage-users-container">
+    <h1>👥 Manage Users</h1>
+    <p class="subtitle">Admin can view, edit, and delete registered users.</p>
+  
+    <!-- Add User Button -->
+    <button class="add-btn" (click)="openAddUser()">+ Add User</button>
+  
+    <!-- Users Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Diabetes Type</th>
+          <th>Weight (kg)</th>
+          <th>Height (cm)</th>
+          <th>Activity Level</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.diabetesType }}</td>
+          <td>{{ user.weight }}</td>
+          <td>{{ user.height }}</td>
+          <td>{{ user.activityLevel }}</td>
+          <td>
+            <button class="edit" (click)="editUser(user)">Edit</button>
+            <button class="delete" (click)="deleteUser(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Add/Edit User Modal -->
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <h2>{{ editingUser ? 'Edit User' : 'Add User' }}</h2>
+        <form (ngSubmit)="saveUser()">
+          <input type="text" [(ngModel)]="selectedUser.name" name="name" placeholder="Name" required />
+          <input type="text" [(ngModel)]="selectedUser.phone" name="phone" placeholder="Phone" required />
+          <input type="email" [(ngModel)]="selectedUser.email" name="email" placeholder="Email" required />
+          <input type="password" [(ngModel)]="selectedUser.password" name="password" placeholder="Password" [required]="!editingUser"/>
+  
+          <select [(ngModel)]="selectedUser.diabetesType" name="diabetesType" required>
+            <option value="Type 1">Type 1</option>
+            <option value="Type 2">Type 2</option>
+            <option value="Gestational">Gestational</option>
+          </select>
+  
+          <input type="number" [(ngModel)]="selectedUser.weight" name="weight" placeholder="Weight (kg)" required />
+          <input type="number" [(ngModel)]="selectedUser.height" name="height" placeholder="Height (cm)" required />
+  
+          <select [(ngModel)]="selectedUser.activityLevel" name="activityLevel" required>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+          </select>
+  
+          <div class="modal-actions">
+            <button type="submit">{{ editingUser ? 'Update' : 'Add' }}</button>
+            <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

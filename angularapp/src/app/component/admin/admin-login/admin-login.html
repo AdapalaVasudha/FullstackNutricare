@@ -1,0 +1,60 @@
+<div class="login-container">
+    <div class="form-card">
+      <h1>👩‍⚕️ Admin Login</h1>
+  
+      <!-- Login Form -->
+      <form *ngIf="isLoginMode" (ngSubmit)="onLogin()">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="loginData.email" name="email" required />
+  
+        <label>Password</label>
+        <input type="password" [(ngModel)]="loginData.password" name="password" required />
+  
+        <button type="submit">Login</button>
+        <p class="toggle-text">
+          Don’t have an account? <span (click)="switchMode()">Sign up here</span>
+        </p>
+      </form>
+  
+      <!-- Signup Form -->
+      <form *ngIf="!isLoginMode" (ngSubmit)="onSignup()">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="signupData.name" name="name" required />
+  
+        <label>Phone</label>
+        <input type="text" [(ngModel)]="signupData.phone" name="phone" required />
+  
+        <label>Email</label>
+        <input type="email" [(ngModel)]="signupData.email" name="signupEmail" required />
+  
+        <label>Password</label>
+        <input type="password" [(ngModel)]="signupData.password" name="signupPassword" required />
+  
+        <label>Diabetes Type</label>
+        <select [(ngModel)]="signupData.diabetesType" name="diabetesType" required>
+          <option value="Type 1">Type 1</option>
+          <option value="Type 2">Type 2</option>
+          <option value="Gestational">Gestational</option>
+        </select>
+  
+        <label>Weight (kg)</label>
+        <input type="number" [(ngModel)]="signupData.weight" name="weight" required />
+  
+        <label>Height (cm)</label>
+        <input type="number" [(ngModel)]="signupData.height" name="height" required />
+  
+        <label>Activity Level</label>
+        <select [(ngModel)]="signupData.activityLevel" name="activityLevel" required>
+          <option value="Low">Low</option>
+          <option value="Moderate">Moderate</option>
+          <option value="High">High</option>
+        </select>
+  
+        <button type="submit">Sign Up</button>
+        <p class="toggle-text">
+          Already have an account? <span (click)="switchMode()">Login here</span>
+        </p>
+      </form>
+    </div>
+  </div>
+  

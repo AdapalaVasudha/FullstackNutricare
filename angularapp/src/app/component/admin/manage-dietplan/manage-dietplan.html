@@ -1,0 +1,55 @@
+<div class="manage-dietplan-container">
+    <h1>🥑 Manage Diet Plans</h1>
+    <p class="subtitle">Create and assign personalized diet plans for users.</p>
+  
+    <button class="add-btn" (click)="openAddPlan()">+ Add Diet Plan</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Plan Name</th>
+          <th>Diabetes Type</th>
+          <th>Calories</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plan of dietPlans">
+          <td>{{ plan.id }}</td>
+          <td>{{ plan.name }}</td>
+          <td>{{ plan.diabetesType }}</td>
+          <td>{{ plan.calories }}</td>
+          <td>{{ plan.description }}</td>
+          <td>
+            <button class="edit" (click)="editPlan(plan)">Edit</button>
+            <button class="delete" (click)="deletePlan(plan.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <h2>{{ editingPlan ? 'Edit Diet Plan' : 'Add Diet Plan' }}</h2>
+        <form (ngSubmit)="savePlan()">
+          <input type="text" [(ngModel)]="selectedPlan.name" name="name" placeholder="Plan Name" required />
+          <select [(ngModel)]="selectedPlan.diabetesType" name="diabetesType" required>
+            <option value="Type 1">Type 1</option>
+            <option value="Type 2">Type 2</option>
+            <option value="Gestational">Gestational</option>
+          </select>
+          <input type="number" [(ngModel)]="selectedPlan.calories" name="calories" placeholder="Calories" required />
+          <textarea [(ngModel)]="selectedPlan.description" name="description" placeholder="Description" rows="3"></textarea>
+  
+          <div class="modal-actions">
+            <button type="submit">{{ editingPlan ? 'Update' : 'Add' }}</button>
+            <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,33 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="meallog-container">
+  <h1>📝 Meal Logs</h1>
+  <p class="intro">Track your meals and monitor nutritional intake for better diabetes management.</p>
+
+  <!-- Add Meal Log -->
+  <div class="action-bar">
+    <button (click)="addMealLog()">+ Add Meal Log</button>
+  </div>
+
+  <!-- Meal Logs Table -->
+  <table class="meallog-table">
+    <thead>
+      <tr>
+        <th>Meal Name</th>
+        <th>Type</th>
+        <th>Calories</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of mealLogs">
+        <td>{{ log.mealName }}</td>
+        <td>{{ log.type }}</td>
+        <td>{{ log.calories }}</td>
+        <td>{{ log.date }}</td>
+        <td>{{ log.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,61 @@
+<div class="manage-meal-container">
+    <h1>🍽️ Manage Meals</h1>
+    <p class="subtitle">Add, update, or remove meals from the diabetic care system.</p>
+  
+    <!-- Add Meal Button -->
+    <button class="add-btn" (click)="openAddMeal()">+ Add Meal</button>
+  
+    <!-- Meals Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Meal Name</th>
+          <th>Type</th>
+          <th>Calories</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meal of meals">
+          <td>{{ meal.id }}</td>
+          <td>{{ meal.name }}</td>
+          <td>{{ meal.type }}</td>
+          <td>{{ meal.calories }}</td>
+          <td>{{ meal.description }}</td>
+          <td>
+            <button class="edit" (click)="editMeal(meal)">Edit</button>
+            <button class="delete" (click)="deleteMeal(meal.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Add/Edit Meal Modal -->
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <h2>{{ editingMeal ? 'Edit Meal' : 'Add Meal' }}</h2>
+        <form (ngSubmit)="saveMeal()">
+          <input type="text" [(ngModel)]="selectedMeal.name" name="name" placeholder="Meal Name" required />
+          
+          <select [(ngModel)]="selectedMeal.type" name="type" required>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+          </select>
+  
+          <input type="number" [(ngModel)]="selectedMeal.calories" name="calories" placeholder="Calories" required />
+  
+          <textarea [(ngModel)]="selectedMeal.description" name="description" placeholder="Description" rows="3"></textarea>
+  
+          <div class="modal-actions">
+            <button type="submit">{{ editingMeal ? 'Update' : 'Add' }}</button>
+            <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

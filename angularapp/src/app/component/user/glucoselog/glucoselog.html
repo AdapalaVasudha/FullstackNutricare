@@ -1,0 +1,31 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="glucoselog-container">
+  <h1>💉 Glucose Logs</h1>
+  <p class="intro">Monitor your glucose levels and maintain better control over your diabetes.</p>
+
+  <!-- Add Glucose Reading -->
+  <div class="action-bar">
+    <button (click)="addGlucoseLog()">+ Add Glucose Reading</button>
+  </div>
+
+  <!-- Glucose Logs Table -->
+  <table class="glucoselog-table">
+    <thead>
+      <tr>
+        <th>Reading (mg/dL)</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of glucoseLogs">
+        <td>{{ log.level }}</td>
+        <td>{{ log.date }}</td>
+        <td>{{ log.time }}</td>
+        <td>{{ log.notes }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

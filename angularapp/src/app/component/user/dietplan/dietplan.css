@@ -1,0 +1,81 @@
+.dietplans-container {
+    padding: 40px 60px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9fafb;
+    min-height: 100vh;
+    color: #1e3a8a;
+  }
+  
+  /* Title & Intro */
+  .dietplans-container h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+  }
+  
+  .intro {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #334155;
+  }
+  
+  /* Filter Section */
+  .filter {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .filter select {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+  }
+  
+  /* Diet Plan Cards */
+  .plan-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  
+  .plan-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    flex: 1 1 350px;
+    max-width: 400px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+  
+  .plan-card h2 {
+    margin-bottom: 10px;
+    color: #2563eb;
+  }
+  
+  .meals-section h3,
+  .tips-section h3 {
+    margin-top: 15px;
+    color: #1e40af;
+  }
+  
+  .meals-section ul,
+  .tips-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .meals-section li,
+  .tips-section li {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  

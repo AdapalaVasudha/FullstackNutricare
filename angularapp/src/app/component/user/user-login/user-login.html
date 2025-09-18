@@ -1,0 +1,29 @@
+<div class="login-container">
+    <div class="login-card">
+      <h2 *ngIf="!showSignup">Login</h2>
+      <h2 *ngIf="showSignup">Sign Up</h2>
+  
+      <!-- Login Form -->
+      <form *ngIf="!showSignup" (ngSubmit)="loginUser()">
+        <input type="email" placeholder="Email" [(ngModel)]="loginEmail" name="loginEmail" required>
+        <input type="password" placeholder="Password" [(ngModel)]="loginPassword" name="loginPassword" required>
+        <button type="submit">Login</button>
+        <p class="toggle-link">Don't have an account? <a href="#" (click)="showSignup=true">Sign Up</a></p>
+      </form>
+  
+      <!-- Signup Form -->
+      <form *ngIf="showSignup" (ngSubmit)="signupUser()">
+        <input type="text" placeholder="Name" [(ngModel)]="signupName" name="signupName" required>
+        <input type="text" placeholder="Phone Number" [(ngModel)]="signupPhone" name="signupPhone" required>
+        <input type="email" placeholder="Email" [(ngModel)]="signupEmail" name="signupEmail" required>
+        <input type="password" placeholder="Password" [(ngModel)]="signupPassword" name="signupPassword" required>
+        <input type="number" placeholder="Weight (kg)" [(ngModel)]="signupWeight" name="signupWeight" required>
+        <input type="number" placeholder="Height (cm)" [(ngModel)]="signupHeight" name="signupHeight" required>
+        <input type="text" placeholder="Diabetic Type" [(ngModel)]="signupDiabeticType" name="signupDiabeticType" required>
+        <input type="text" placeholder="Moderate Activity Level" [(ngModel)]="signupActivityLevel" name="signupActivityLevel" required>
+        <button type="submit">Sign Up</button>
+        <p class="toggle-link">Already have an account? <a href="#" (click)="showSignup=false">Login</a></p>
+      </form>
+    </div>
+  </div>
+  

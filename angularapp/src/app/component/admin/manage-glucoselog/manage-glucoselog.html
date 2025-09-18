@@ -1,0 +1,57 @@
+<div class="manage-glucose-container">
+    <h1>🩸 Manage Glucose Logs</h1>
+    <p class="subtitle">Monitor and manage user glucose records effectively.</p>
+  
+    <button class="add-btn" (click)="openAddLog()">+ Add Glucose Log</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Glucose Level (mg/dL)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of glucoseLogs">
+          <td>{{ log.id }}</td>
+          <td>{{ log.user }}</td>
+          <td>{{ log.date }}</td>
+          <td>{{ log.time }}</td>
+          <td>{{ log.level }}</td>
+          <td>
+            <span [ngClass]="{'normal': log.level < 140, 'high': log.level >= 140}">
+              {{ log.level < 140 ? 'Normal' : 'High' }}
+            </span>
+          </td>
+          <td>
+            <button class="edit" (click)="editLog(log)">Edit</button>
+            <button class="delete" (click)="deleteLog(log.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <h2>{{ editingLog ? 'Edit Glucose Log' : 'Add Glucose Log' }}</h2>
+        <form (ngSubmit)="saveLog()">
+          <input type="text" [(ngModel)]="selectedLog.user" name="user" placeholder="User Name" required />
+          <input type="date" [(ngModel)]="selectedLog.date" name="date" required />
+          <input type="time" [(ngModel)]="selectedLog.time" name="time" required />
+          <input type="number" [(ngModel)]="selectedLog.level" name="level" placeholder="Glucose Level (mg/dL)" required />
+  
+          <div class="modal-actions">
+            <button type="submit">{{ editingLog ? 'Update' : 'Add' }}</button>
+            <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
